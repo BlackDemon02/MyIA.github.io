@@ -1,0 +1,182 @@
+body {
+    font-family: 'Futura', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.light-mode {
+    background-color: white;
+    color: black;
+}
+
+.dark-mode {
+    background-color: #0e0e0e;
+    color: white;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100px;
+    background-color: #00000090; /* Negro transparente */
+    color: white;
+    font-size: 24px;
+    font-family: 'Futura', sans-serif;
+}
+
+#left-image {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px; /* Ajusta el tamaño de la imagen según sea necesario */
+}
+
+#reloj {
+    flex-grow: 1;
+    text-align: center;
+}
+
+#contador {
+    position: absolute;
+    right: 150px; /* Ajuste para dar espacio al botón de modo */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+}
+
+#mode-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#search-container {
+    position: absolute;
+    left: 20px;
+    top: calc(50% - 100px); /* Ajusta la posición para que esté más arriba */
+    display: inline-block;
+}
+
+#buscador-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#buscador {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 10px);
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    animation: slideIn 0.5s forwards; /* Animación más lenta */
+}
+
+#buscador input {
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px) scale(0.95); /* Efecto futurista */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.botones {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.botones button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.botones button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+h2 {
+    margin-top: 50px;
+    color: #00bfff;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
+}
+
+section {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+}
+
+article {
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+article h3 {
+    color: #00bfff;
+}
+
+footer {
+    padding: 20px;
+    background: #111;
+    color: #888;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.light-mode section {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+.light-mode footer {
+    background: #f0f0f0;
+    color: #555;
+}
+
+.light-mode article h3 {
+    color: #007bff;
+}
