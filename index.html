@@ -3,63 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Futuro de la IA</title>
+    <title>Futuro de la IA</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="https://files.oaiusercontent.com/file-CYpJLxkqEidvWFkLykkppAAA?se=2024-06-06T03%3A23%3A19Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Def3350bd-350a-4c8e-b8ba-69cc655a41bd.webp&sig=fOsKrpIH6Gl9N94VwgWsHkNh1%2B%2B8tZ84EDKYFhy15Rg%3D" type="image/webp">
+    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo.png">
 </head>
-<body class="light-mode">
-    <div id="header">
-        <img id="left-image" src="https://files.oaiusercontent.com/file-CYpJLxkqEidvWFkLykkppAAA?se=2024-06-06T03%3A23%3A19Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Def3350bd-350a-4c8e-b8ba-69cc655a41bd.webp&sig=fOsKrpIH6Gl9N94VwgWsHkNh1%2B%2B8tZ84EDKYFhy15Rg%3D" alt="Imagen">
-        <div id="reloj">00:00:00 01 de Enero de 2024</div>
-        <div id="contador">Visitas: <span id="visitas">0</span></div>
-        <button id="mode-toggle" onclick="toggleMode()">Modo Oscuro</button>
-    </div>
-
-    <div id="search-container">
-        <button id="buscador-btn" onmouseover="mostrarBuscador()" onclick="buscar()">Buscar</button>
-        <div id="buscador" onmouseover="mantenerBuscador()" onmouseout="ocultarBuscador()">
-            <input type="text" id="search-input" placeholder="Buscar...">
+<body>
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm" onsubmit="return login()">
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="age">Edad:</label>
+                <input type="number" id="age" name="age" min="0" required>
+                <label for="gender">Sexo:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Seleccione</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <button type="submit" class="styled-button">Iniciar Sesión</button>
+            </form>
         </div>
     </div>
-
-    <h1>El Futuro de la IA</h1>
-
-    <div class="botones">
-        <button onclick="location.href='tema1.html'">1. Automatización y el mercado laboral</button>
-        <button onclick="location.href='tema2.html'">2. Desarrollo de IA general</button>
-        <button onclick="location.href='tema3.html'">3. Ética y regulación de la IA</button>
-        <button onclick="location.href='tema4.html'">4. Avances en aprendizaje profundo</button>
-        <button onclick="location.href='tema5.html'">5. IA en la atención médica</button>
-        <button onclick="location.href='tema6.html'">6. Vehículos autónomos</button>
-        <button onclick="location.href='tema7.html'">7. Seguridad en sistemas de IA</button>
-        <button onclick="location.href='tema8.html'">8. IA y privacidad de los datos</button>
+    <div id="mainContent" class="hidden">
+        <header>
+            <div class="header-content">
+                <div id="visitCountContainer" class="counter">Visitas: <span id="visitCount">0</span></div>
+                <div id="clock" class="clock"></div>
+                <img src="images/logo.png" alt="Logo" class="logo">
+            </div>
+        </header>
+        <main>
+            <div class="top-content">
+                <button id="homeButton" class="styled-button" onclick="navigateTo('index.html')">Inicio</button>
+                <button id="loginButton" class="styled-button" onclick="showLoginModal()">Login</button>
+                <div id="pageTitle">El futuro de la IA</div>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar tema..." onkeyup="filterTopics()">
+                <button class="styled-button" onclick="searchTopic()">Buscar</button>
+            </div>
+            <div id="topics" class="buttons-container">
+                <button data-topic="1" onclick="navigateTo('topic1.html')">Tema 1: Introducción</button>
+                <button data-topic="2" onclick="navigateTo('topic2.html')">Tema 2: Aplicaciones</button>
+                <button data-topic="3" onclick="navigateTo('topic3.html')">Tema 3: Avances</button>
+                <button data-topic="4" onclick="navigateTo('topic4.html')">Tema 4: Ética</button>
+                <button data-topic="5" onclick="navigateTo('topic5.html')">Tema 5: Futuro</button>
+                <button data-topic="6" onclick="navigateTo('topic6.html')">Tema 6: IA y Salud</button>
+                <button data-topic="7" onclick="navigateTo('topic7.html')">Tema 7: IA en la Educación</button>
+                <button data-topic="8" onclick="navigateTo('topic8.html')">Tema 8: IA en el Transporte</button>
+            </div>
+            <section class="about-section">
+                <h2 onclick="toggleCV()">Sobre mí <span id="toggle-icon">▼</span></h2>
+                <div id="aboutContent" class="about-content">
+                    <h3>Nombre</h3>
+                    <p>Tu nombre aquí</p>
+                    <h3>Profesión</h3>
+                    <p>Tu profesión aquí</p>
+                    <h3>Experiencia</h3>
+                    <ul>
+                        <li>Trabajo 1: Descripción del trabajo 1</li>
+                        <li>Trabajo 2: Descripción del trabajo 2</li>
+                        <li>Trabajo 3: Descripción del trabajo 3</li>
+                    </ul>
+                    <h3>Educación</h3>
+                    <ul>
+                        <li>Título 1: Descripción del título 1</li>
+                        <li>Título 2: Descripción del título 2</li>
+                    </ul>
+                    <h3>Habilidades</h3>
+                    <p>Tus habilidades aquí</p>
+                    <h3>Contacto</h3>
+                    <p>Tu información de contacto aquí</p>
+                </div>
+                <form id="contactForm">
+                    <h3>Formulario de Contacto</h3>
+                    <label for="contactName">Nombre:</label>
+                    <input type="text" id="contactName" name="name" required>
+                    <label for="contactEmail">Correo Electrónico:</label>
+                    <input type="email" id="contactEmail" name="email" required>
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <button type="submit" class="styled-button">Enviar</button>
+                </form>
+            </section>
+        </main>
     </div>
-
-    <section id="about">
-        <h2>Sobre la IA</h2>
-        <p>La inteligencia artificial (IA) es una disciplina de la informática que se centra en la creación de sistemas capaces de realizar tareas que, hasta hace poco, requerían de la inteligencia humana. Estos sistemas incluyen desde simples algoritmos de búsqueda hasta complejas redes neuronales.</p>
-    </section>
-
-    <section id="news">
-        <h2>Noticias Recientes</h2>
-        <article>
-            <h3>Avances en IA Médica</h3>
-            <p>Investigadores han desarrollado un nuevo sistema de IA capaz de diagnosticar enfermedades con una precisión sin precedentes...</p>
-        </article>
-        <article>
-            <h3>IA y Seguridad Cibernética</h3>
-            <p>Las últimas innovaciones en IA están siendo aplicadas para mejorar la seguridad cibernética y proteger contra amenazas avanzadas...</p>
-        </article>
-        <article>
-            <h3>Vehículos Autónomos</h3>
-            <p>La industria automotriz está revolucionando con la integración de IA en vehículos autónomos que prometen cambiar la forma en que nos movemos...</p>
-        </article>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 El Futuro de la IA. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
