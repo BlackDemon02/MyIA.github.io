@@ -3,41 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tema 1 - El Futuro de la IA</title>
+    <title>Automatización y el mercado laboral</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="https://files.oaiusercontent.com/file-CYpJLxkqEidvWFkLykkppAAA?se=2024-06-06T03%3A23%3A19Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Def3350bd-350a-4c8e-b8ba-69cc655a41bd.webp&sig=fOsKrpIH6Gl9N94VwgWsHkNh1%2B%2B8tZ84EDKYFhy15Rg%3D" type="image/webp">
+    <link rel="icon" href="DALL·E 2024-06-06 10.28.06 - A logo with the text 'IA' in an elegant font on a black background, similar to the reference image. The design should feature a stylish, serif typefac.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="light-mode">
     <div id="header">
-        <img id="left-image" src="https://files.oaiusercontent.com/file-CYpJLxkqEidvWFkLykkppAAA?se=2024-06-06T03%3A23%3A19Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Def3350bd-350a-4c8e-b8ba-69cc655a41bd.webp&sig=fOsKrpIH6Gl9N94VwgWsHkNh1%2B%2B8tZ84EDKYFhy15Rg%3D" alt="Imagen">
-        <div id="reloj">00:00:00 01 de Enero de 2024</div>
+        <img id="left-image" src="DALL·E 2024-06-06 10.28.06 - A logo with the text 'IA' in an elegant font on a black background, similar to the reference image. The design should feature a stylish, serif typefac.jpg" alt="Logo IA">
+        <div id="reloj">00:00:00 Lunes 01, Enero, 2024</div>
         <div id="contador">Visitas: <span id="visitas">0</span></div>
+        <button id="mode-toggle" onclick="toggleMode()">Modo Oscuro</button>
     </div>
 
     <div id="search-container">
-        <button id="buscador-btn" onmouseover="mostrarBuscador()" onclick="buscar()">Buscar</button>
+        <button id="buscador-btn" onmouseover="mostrarBuscador()">Buscar</button>
         <div id="buscador" onmouseover="mantenerBuscador()" onmouseout="ocultarBuscador()">
-            <input type="text" id="search-input" placeholder="Buscar...">
+            <form action="https://www.google.com/search" method="get" target="_blank">
+                <input type="text" id="search-input" name="q" placeholder="Buscar en Google..." required>
+                <button type="submit">Buscar</button>
+            </form>
         </div>
     </div>
 
-    <div class="botones">
-        <button onclick="location.href='index.html'">Inicio</button>
-    </div>
+    <h1 style="margin-top: 150px;">Automatización y el mercado laboral</h1>
 
-    <h1>Tema 1 - El Futuro de la IA</h1>
+    <button id="inicio-btn-top" data-ignore-counter="true" onclick="location.href='index.html'">Inicio</button>
 
-    <h2>Subtemas</h2>
-    <ul>
-        <li>Automatización y el mercado laboral</li>
-        <li>Nuevas oportunidades laborales</li>
-        <li>Reskilling y upskilling</li>
-        <li>IA en la manufactura</li>
-        <li>Automatización en servicios</li>
-        <li>Políticas laborales y automatización</li>
-        <li>Futuro del trabajo</li>
-        <li>IA y productividad</li>
-    </ul>
+    <img src="https://scitechdaily.com/images/Factory-Automation.gif" alt="Factory Automation" style="width: 80%; margin: 20px auto; display: block; border-radius: 10px;">
+
+    <section id="content">
+        <h2>Impacto de la Automatización en el Empleo</h2>
+        <h3>Oportunidades</h3>
+        <p><strong>Mayor Eficiencia y Productividad:</strong> La automatización permite a las empresas mejorar la eficiencia y la productividad. Por ejemplo, en la contabilidad y la gestión de datos, los sistemas automatizados pueden realizar tareas complejas de manera más rápida y precisa que los humanos​ (Nexford University)​.</p>
+        <p><strong>Creación de Nuevos Tipos de Empleos:</strong> Aunque la automatización elimina ciertos puestos de trabajo, también crea nuevos roles que no existían antes. Estos nuevos empleos suelen requerir habilidades técnicas avanzadas, lo que puede conducir a oportunidades en áreas como la robótica y la inteligencia artificial​ (Brookings)​.</p>
+        <p><strong>Reducción de Costos y Aumento de Competitividad:</strong> Las empresas que adoptan la automatización pueden reducir costos operativos, lo que las hace más competitivas a nivel global. Esto puede traducirse en precios más bajos para los consumidores y mayor demanda de bienes y servicios, lo que a su vez puede generar empleo​ (IMF)​.</p>
+        <audio controls style="display: block; margin: 20px auto;">
+            <source src="A1.mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+        </audio>
+
+        <h3>Desafíos</h3>
+        <p><strong>Desplazamiento de Trabajadores:</strong> La automatización puede desplazar a los trabajadores, especialmente aquellos en puestos de trabajo que realizan tareas rutinarias y repetitivas. Esto crea la necesidad de programas de reciclaje profesional y educación continua para ayudar a estos trabajadores a adaptarse a nuevos roles​ (World Economic Forum)​​ (MIT Technology Review)​.</p>
+        <p><strong>Desigualdad en el Acceso a Nuevas Oportunidades:</strong> La adopción de tecnologías avanzadas puede aumentar la desigualdad, ya que los trabajadores con habilidades especializadas en tecnologías nuevas se benefician más que aquellos sin estas habilidades. Esto puede llevar a una mayor disparidad de ingresos​ (IMF)​​ (MIT Technology Review)​.</p>
+        <p><strong>Impacto en la Calidad de los Empleos:</strong> La calidad de los empleos puede verse afectada, con un aumento en la demanda de trabajos altamente especializados y una disminución en la necesidad de trabajos rutinarios y manuales. Esto puede resultar en una mayor polarización del mercado laboral​ (World Economic Forum)​.</p>
+        <img src="https://th.bing.com/th/id/OIP.Tgnw1i8gUp3PFwquuOMchQHaEl?rs=1&pid=ImgDetMain" alt="Impacto en la Calidad de los Empleos" style="width: 80%; margin: 20px auto; display: block; border-radius: 10px;">
+    </section>
+
+    <section id="mitigation-strategies">
+        <h2>Estrategias para Mitigar los Efectos Negativos</h2>
+        <p>Para enfrentar estos desafíos, es crucial implementar políticas que apoyen a los trabajadores en su transición hacia nuevos roles. Esto incluye:</p>
+        <ul>
+            <li><strong>Programas de Reciclaje y Educación Continua:</strong> Fomentar la educación y el aprendizaje a lo largo de la vida para que los trabajadores puedan adquirir las nuevas habilidades necesarias para adaptarse a la automatización​ (Brookings)​.</li>
+            <li><strong>Políticas de Seguridad Social:</strong> Establecer redes de seguridad social que ayuden a los trabajadores desplazados a encontrar nuevas oportunidades laborales y garantizar un ingreso básico mientras se capacitan​ (IMF)​.</li>
+            <li><strong>Colaboración entre Sectores:</strong> Fomentar la colaboración entre gobiernos, empresas y organizaciones educativas para desarrollar programas de formación y adaptación laboral efectivos​ (MIT Technology Review)​.</li>
+        </ul>
+    </section>
+
+    <section id="conclusion">
+        <h2>Conclusión</h2>
+        <p>La automatización tiene el potencial de transformar el mercado laboral de manera significativa, ofreciendo tanto oportunidades como desafíos. La clave está en desarrollar políticas y estrategias que permitan a los trabajadores y a las economías adaptarse a estos cambios de manera inclusiva y sostenible.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/DcuTYYGrSKE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: block; margin: 20px auto;"></iframe>
+
+        <p>Para más información y una explicación más detallada, puedes consultar los siguientes enlaces:</p>
+        <ul>
+            <li><a href="https://www.brookings.edu/research/understanding-the-impact-of-automation-on-workers-jobs-and-wages/" target="_blank">Brookings Institution: Understanding the impact of automation on workers, jobs, and wages</a></li>
+            <li><a href="https://www.imf.org/en/News/Articles/2018/07/24/AI-Will-Transform-the-Global-Economy-Lets-Make-Sure-It-Benefits-Humanity" target="_blank">IMF: AI Will Transform the Global Economy. Let’s Make Sure It Benefits Humanity</a></li>
+            <li><a href="https://www.nexford.org/resources/how-will-artificial-intelligence-affect-jobs-2024-2030" target="_blank">Nexford University: How Will Artificial Intelligence Affect Jobs 2024-2030</a></li>
+        </ul>
+    </section>
+
+    <button id="inicio-btn-bottom" data-ignore-counter="true" onclick="location.href='index.html'">Inicio</button>
 
     <script src="script.js"></script>
 </body>
