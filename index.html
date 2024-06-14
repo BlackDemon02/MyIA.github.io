@@ -5,22 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Futuro de la IA</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="DALL·E 2024-06-06 10.28.06 - A logo with the text 'IA' in an elegant font on a black background, similar to the reference image. The design should feature a stylish, serif typefac.jpg">
+    <link rel="icon" href="DALL·E 2024-06-06 10.28.06 - A logo with the text 'IA' in an elegant font on a black background, similar to the reference image. The design should feature a stylish, serif typefac.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body class="light-mode">
     <div id="header">
-        <img id="left-image" src="DALL·E 2024-06-06 10.28.06 - A logo with the text 'IA' in an elegant font on a black background, similar to the reference image. The design should feature a stylish, serif typefac.jpg">
-        <div id="reloj">00:00:00 01 de Enero de 2024</div>
+        <img id="left-image" src="DALL·E 2024-06-06 10.28.06 - A logo with the text 'IA' in an elegant font on a black background, similar to the reference image. The design should feature a stylish, serif typefac.jpg" alt="Logo IA">
+        <div id="location-display">Ubicación: Desconocida</div>
+        <div id="reloj">00:00:00 Lunes 01, Enero, 2024</div>
         <div id="contador">Visitas: <span id="visitas">0</span></div>
-        <button id="mode-toggle" onclick="toggleMode()">Modo Oscuro</button>
+        <button id="mode-toggle">Modo Oscuro</button>
     </div>
 
-    <div id="search-container">
-        <button id="buscador-btn" onmouseover="mostrarBuscador()" onclick="buscar()">Buscar</button>
-        <div id="buscador" onmouseover="mantenerBuscador()" onmouseout="ocultarBuscador()">
-            <input type="text" id="search-input" placeholder="Buscar...">
-        </div>
-    </div>
+    <img id="header-image" src="https://cdn.technadu.com/wp-content/uploads/2018/10/Data-Swarm-GIF.gif" alt="Header Image" />
 
     <h1>El Futuro de la IA</h1>
 
@@ -30,34 +27,173 @@
         <button onclick="location.href='tema3.html'">3. Ética y regulación de la IA</button>
         <button onclick="location.href='tema4.html'">4. Avances en aprendizaje profundo</button>
         <button onclick="location.href='tema5.html'">5. IA en la atención médica</button>
-        <button onclick="location.href='tema6.html'">6. Vehículos autónomos</button>
-        <button onclick="location.href='tema7.html'">7. Seguridad en sistemas de IA</button>
-        <button onclick="location.href='tema8.html'">8. IA y privacidad de los datos</button>
+    </div>
+
+    <div id="search-container">
+        <button id="buscador-btn">Buscar</button>
+        <div id="buscador">
+            <form action="https://www.google.com/search" method="get" target="_blank">
+                <input type="text" id="search-input" name="q" placeholder="Buscar en Google..." required>
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
     </div>
 
     <section id="about">
-        <h2>Sobre la IA</h2>
-        <p>La inteligencia artificial (IA) es una disciplina de la informática que se centra en la creación de sistemas capaces de realizar tareas que, hasta hace poco, requerían de la inteligencia humana. Estos sistemas incluyen desde simples algoritmos de búsqueda hasta complejas redes neuronales.</p>
+        <h2>Historia de la IA</h2>
+        <p>La inteligencia artificial (IA) ha recorrido un largo camino desde sus inicios. Comenzó como una rama teórica de la informática, enfocada en la creación de máquinas que pudieran realizar tareas que requerían inteligencia humana. A lo largo de los años, ha evolucionado a través de varios hitos clave:</p>
+        <ul>
+            <li><strong>Década de 1950:</strong> Nacimiento del término "inteligencia artificial" y los primeros programas capaces de jugar ajedrez y resolver problemas matemáticos simples.</li>
+            <li><strong>Década de 0-1970:</strong> Desarrollo de los primeros sistemas expertos, capaces de emular el conocimiento humano en campos específicos como la medicina.</li>
+            <li><strong>Década de 1980-1990:</strong> Progreso en redes neuronales y aprendizaje automático, con la introducción de algoritmos más avanzados y potentes.</li>
+            <li><strong>Década de 2000-2010:</strong> Aumento en la capacidad de procesamiento y almacenamiento de datos, permitiendo el desarrollo de IA más complejas y sofisticadas.</li>
+            <li><strong>2010-presente:</strong> Expansión de la IA en diversas industrias, incluyendo salud, transporte, finanzas y entretenimiento. Avances en el aprendizaje profundo y el procesamiento del lenguaje natural.</li>
+        </ul>
+        <p>A medida que avanzamos, la IA tiene el potencial de transformar aún más nuestras vidas. Sin embargo, también enfrenta desafíos significativos que deben abordarse:</p>
+        <ul>
+            <li><strong>Ética y Regulación:</strong> Es crucial establecer marcos éticos y regulaciones claras para garantizar que la IA se desarrolle y utilice de manera responsable.</li>
+            <li><strong>Privacidad y Seguridad:</strong> La protección de los datos personales y la seguridad de los sistemas de IA son fundamentales para evitar abusos y vulnerabilidades.</li>
+            <li><strong>Transparencia y Explicabilidad:</strong> A medida que los algoritmos de IA se vuelven más complejos, es importante que sean transparentes y que sus decisiones puedan explicarse.</li>
+            <li><strong>Impacto en el Empleo:</strong> La automatización impulsada por la IA puede desplazar ciertos trabajos, por lo que es esencial planificar y gestionar esta transición de manera justa y equitativa.</li>
+        </ul>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ldCofaq9lyQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
 
     <section id="news">
         <h2>Noticias Recientes</h2>
         <article>
-            <h3>Avances en IA Médica</h3>
-            <p>Investigadores han desarrollado un nuevo sistema de IA capaz de diagnosticar enfermedades con una precisión sin precedentes...</p>
+            <h3>Carta abierta de los expertos de OpenAI advierte sobre “riesgos graves”</h3>
+            <p>Un grupo de expertos de OpenAI exige que las empresas de inteligencia artificial sean mucho más transparentes sobre los “graves riesgos” de la IA y que protejan a los empleados que expresen preocupaciones sobre la tecnología que están desarrollando...</p>
+            <a href="https://cnnespanol.cnn.com/2024/06/04/carta-expertos-openai-advertencia-riesgos-inteligencia-artificial-trax/">
+                <img src="https://th.bing.com/th/id/OIP.9ZLP7Ujlk22f9iO2oQ2qkAHaE7?rs=1&pid=ImgDetMain" alt="Carta abierta de OpenAI">
+            </a>
         </article>
         <article>
-            <h3>IA y Seguridad Cibernética</h3>
-            <p>Las últimas innovaciones en IA están siendo aplicadas para mejorar la seguridad cibernética y proteger contra amenazas avanzadas...</p>
+            <h3>Trabajadores de la compañía que creó ChatGPT denuncian en una carta que están obligados a firmar contratos donde no pueden criticar a la empresa tras su salida si no quieren perder su dinero.</h3>
+            <p>Un grupo de trabajadores de la compañía que creó ChatGPT denuncia que están obligados a firmar contratos donde no pueden criticar a la empresa tras su salida si no quieren perder su dinero...</p>
+            <a href="https://elpais.com/tecnologia/2024-06-07/por-que-exempleados-de-openai-prefieren-alertar-del-peligro-de-la-inteligencia-artificial-a-riesgo-de-perder-sus-millones.html">
+                <img src="https://matense.net/wp-content/uploads/2023/05/81DDB7E9-3940-4724-8A42-01BF042D54B5.jpeg" alt="Denuncia de trabajadores de OpenAI" style="width: 100%; max-width: 300px;">
+            </a>
         </article>
         <article>
-            <h3>Vehículos Autónomos</h3>
-            <p>La industria automotriz está revolucionando con la integración de IA en vehículos autónomos que prometen cambiar la forma en que nos movemos...</p>
+            <h3>La IA está lista para avanzar a un ritmo rápido, volviéndose más poderosa y extendiéndose al mundo físico.</h3>
+            <p>La inteligencia artificial está lista para avanzar a un ritmo rápido, volviéndose más poderosa y extendiéndose al mundo físico...</p>
+            <a href="https://www.nytimes.com/es/2024/01/12/espanol/inteligencia-artificial-2024.html">
+                <img src="https://static01.nyt.com/images/2024/01/09/business/00-ai-progress-espp/00-ai-progress-jumbo.png?quality=75&auto=webp" alt="IA avance rápido">
+            </a>
+        </article>
+        <article>
+            <h3>La estupenda traducción de llamadas de los Galaxy está limitada a la aplicación Teléfono: esto cambiará pronto</h3>
+            <p>Galaxy AI tiene un montón de funciones de IA, pero Live Translate es una de las más interesantes. Por el momento se puede utilizar únicamente a través de la aplicación teléfono, pero esto cambiará...</p>
+            <a href="https://www.xataka.com/moviles/estupenda-traduccion-llamadas-galaxy-esta-limitada-a-aplicacion-telefono-esto-cambiara-pronto">
+                <img src="https://i.blogs.es/629b3a/call-assist/1200_800.png" alt="Traducción de llamadas Galaxy">
+            </a>
+        </article>
+        <article>
+            <h3>Desarrollo y despliegue de autonomía a gran escala en vehículos, robots y más</h3>
+            <p>Desarrollamos y desplegamos autonomía a gran escala en vehículos, robots y más. Creemos que un enfoque basado en IA avanzada para la visión y la planificación, respaldado por el uso eficiente del hardware de inferencia, es la única manera de lograr una solución general para la conducción autónoma completa, la robótica bípeda y más allá...</p>
+            <a href="https://www.tesla.com/AI">
+                <img src="https://cdn.forbes.com.mx/2023/06/Optimus-Tesla-robot-1024x581.png" alt="Vehículos Autónomos">
+            </a>
+        </article>
+        <article>
+            <h3>Más noticias de IA aquí</h3>
+            <a href="https://www.bing.com/news/search?q=ia&qpvt=noticias+de+ia&FORM=EWRE">
+                <img src="https://pa1.narvii.com/6611/fb882b3080deb2d0523ea4b980075305cbdd2546_hq.gif" alt="Más noticias de IA">
+            </a>
         </article>
     </section>
 
+    <section id="about-me">
+        <h2>Sobre mí <span id="triangle">&#9660;</span></h2>
+        <div id="about-me-content">
+            <h3>Información Personal</h3>
+            <p><strong>Nombre:</strong> Juan Pablo Zarate Hernández</p>
+            <p><strong>Email:</strong> juanpablo@gmail.com</p>
+            <p><strong>Teléfono:</strong> 771-1788516</p>
+
+            <h3>Educación</h3>
+            <p><strong>Grado:</strong> Estudiante de Preparatoria</p>
+            <p><strong>Institución:</strong> Preparatoria Cebetis8</p>
+            <p><strong>Año de Graduación:</strong> 2024</p>
+
+            <h3>Experiencia Profesional</h3>
+            <p><strong>Empresa:</strong> Proyecto Futuro de la IA</p>
+            <p><strong>Posición:</strong> Fundador y Desarrollador Web</p>
+            <p><strong>Duración:</strong> Enero 2023 - Presente</p>
+            <p><strong>Descripción:</strong> Fundé y desarrollé una página web dedicada al análisis y la proyección del futuro de la inteligencia artificial, enfocándome en proporcionar información relevante y actualizada sobre los avances tecnológicos y sus posibles impactos en la sociedad. Lideré un pequeño equipo de colaboradores, gestioné contenido y aseguré la funcionalidad y diseño de la página.</p>
+
+            <h3>Habilidades</h3>
+            <ul>
+                <li>Desarrollo Web (HTML, CSS, JavaScript)</li>
+                <li>Diseño Gráfico</li>
+                <li>Gestión de Proyectos</li>
+                <li>Investigación y Análisis</li>
+                <li>Comunicación y Presentación</li>
+                <li>Trabajo en Equipo</li>
+            </ul>
+
+            <h3>Proyectos</h3>
+            <p><strong>Proyecto 1:</strong> Creación y gestión de la página web "Futuro de la IA", un recurso educativo y de investigación para estudiantes y entusiastas de la inteligencia artificial. La página incluye artículos, noticias y análisis sobre los últimos avances en IA, así como un foro para la discusión y el intercambio de ideas.</p>
+
+            <p><strong>Proyecto 2:</strong> Desarrollo de un chatbot interactivo para la página "Futuro de la IA", diseñado para responder preguntas frecuentes y proporcionar información instantánea sobre temas de inteligencia artificial, mejorando la experiencia del usuario y facilitando el acceso a información relevante.</p>
+
+            <h3>Currículum</h3>
+            <p>Puedes ver mi currículum completo <a href="https://www.canva.com/design/DAGHafDBCWM/Rd_bwnwItiQgt4schIqBNg/edit?utm_content=DAGHafDBCWM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" style="color: #00bfff; text-decoration: underline;">aquí</a>.</p>
+        </div>
+    </section>
+
+    <section id="contact-form">
+        <h2>Contacto</h2>
+        <form id="contact-form" onsubmit="sendEmail(event)">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="sex">Sexo:</label>
+                <select id="sex" name="sex" required>
+                    <option value="">Selecciona...</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Edad:</label>
+                <input type="number" id="age" name="age" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
     <footer>
+        <div id="social-media">
+            <p><a href="https://www.youtube.com" target="_blank">YouTube</a> - Síguenos en YouTube</p>
+            <p><a href="https://x.com" target="_blank">Twitter</a> - Síguenos en Twitter</p>
+            <p><a href="https://www.facebook.com" target="_blank">Facebook</a> - Síguenos en Facebook</p>
+        </div>
         <p>&copy; 2024 El Futuro de la IA. Todos los derechos reservados.</p>
+        <p>Creación: 3 de Mayo de 2024</p>
+        <p>Última actualización: 6 de junio de 2024</p>
+        <div id="additional-info">
+            <p>Información obtenida de:</p>
+            <ul>
+                <li><a href="https://www.nytimes.com/es/2024/01/12/espanol/inteligencia-artificial-2024.html" target="_blank">The New York Times</a></li>
+                <li><a href="https://www.iso.org/es/inteligencia-artificial/que-es-ia" target="_blank">ISO - Qué es IA</a></li>
+                <li><a href="https://www.ibm.com/mx-es/topics/artificial-intelligence" target="_blank">IBM - Inteligencia Artificial</a></li>
+                <li><a href="https://www.ibm.com/mx-es/topics/artificial-intelligence" target="_blank">IBM - Inteligencia Artificial</a></li>
+            </ul>
+        </div>
     </footer>
 
     <script src="script.js"></script>
