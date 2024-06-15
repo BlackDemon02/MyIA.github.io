@@ -22,8 +22,6 @@
         Tu navegador no soporta la etiqueta de video.
     </video>
 
-    <button id="inicio-btn-top" onclick="goToTop()">Inicio</button>
-
     <h1>El Futuro de la IA</h1>
 
     <div class="botones">
@@ -36,7 +34,7 @@
 
     <div id="search-container">
         <button id="buscador-btn">Buscar</button>
-        <div id="buscador">
+        <div id="buscador" onmouseover="mantenerBuscador()" onmouseout="ocultarBuscador()">
             <form action="https://www.google.com/search" method="get" target="_blank">
                 <input type="text" id="search-input" name="q" placeholder="Buscar en Google..." required>
                 <button type="submit">Buscar</button>
