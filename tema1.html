@@ -7,13 +7,20 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="DALL·E 2024-06-06 10.28.06 - A logo with the text 'IA' in an elegant font on a black background, similar to the reference image. The design should feature a stylish, serif typefac.jpg" type="image/jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Ocultar el contador de visitas en esta página específica */
+        #visit-counter {
+            display: none;
+        }
+    </style>
 </head>
 <body class="light-mode">
     <div id="header">
         <img id="left-image" src="DALL·E 2024-06-06 10.28.06 - A logo with the text 'IA' in an elegant font on a black background, similar to the reference image. The design should feature a stylish, serif typefac.jpg" alt="Logo IA">
+        <div id="location-display">Ubicación: Desconocida</div>
         <div id="reloj">00:00:00 Lunes 01, Enero, 2024</div>
-        <div id="contador">Visitas: <span id="visitas">0</span></div>
-        <button id="mode-toggle" onclick="toggleMode()">Modo Oscuro</button>
+        <div id="visit-counter">Visitas: 0</div>
+        <button id="mode-toggle">Modo Oscuro</button>
     </div>
 
     <div id="search-container">
@@ -28,7 +35,9 @@
 
     <h1 style="margin-top: 150px;">Automatización y el mercado laboral</h1>
 
-    <button id="inicio-btn-top" data-ignore-counter="true">Inicio</button>
+    <div class="botones">
+        <button onclick="location.href='index.html'" class="inicio-button">Inicio</button>
+    </div>
 
     <img src="https://scitechdaily.com/images/Factory-Automation.gif" alt="Factory Automation" style="width: 80%; margin: 20px auto; display: block; border-radius: 10px;">
 
@@ -73,7 +82,29 @@
         </ul>
     </section>
 
-    <button id="inicio-btn-bottom" data-ignore-counter="true">Inicio</button>
+    <div class="botones">
+        <button onclick="location.href='index.html'" class="inicio-button">Inicio</button>
+    </div>
+
+    <footer>
+        <div id="social-media">
+            <p><a href="https://www.youtube.com" target="_blank">YouTube</a> - Síguenos en YouTube</p>
+            <p><a href="https://x.com" target="_blank">Twitter</a> - Síguenos en Twitter</p>
+            <p><a href="https://www.facebook.com" target="_blank">Facebook</a> - Síguenos en Facebook</p>
+        </div>
+        <p>&copy; 2024 El Futuro de la IA. Todos los derechos reservados.</p>
+        <p>Creación: 3 de Mayo de 2024</p>
+        <p>Última actualización: 6 de junio de 2024</p>
+        <div id="additional-info">
+            <p>Información obtenida de:</p>
+            <ul>
+                <li><a href="https://www.nytimes.com/es/2024/01/12/espanol/inteligencia-artificial-2024.html" target="_blank">The New York Times</a></li>
+                <li><a href="https://www.iso.org/es/inteligencia-artificial/que-es-ia" target="_blank">ISO - Qué es IA</a></li>
+                <li><a href="https://www.ibm.com/mx-es/topics/artificial-intelligence" target="_blank">IBM - Inteligencia Artificial</a></li>
+                <li><a href="https://www.ibm.com/mx-es/topics/artificial-intelligence" target="_blank">IBM - Inteligencia Artificial</a></li>
+            </ul>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
