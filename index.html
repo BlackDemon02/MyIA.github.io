@@ -13,7 +13,7 @@
         <img id="left-image" src="DALL·E 2024-06-06 10.28.06 - A logo with the text 'IA' in an elegant font on a black background, similar to the reference image. The design should feature a stylish, serif typefac.jpg" alt="Logo IA">
         <div id="location-display">Ubicación: Desconocida</div>
         <div id="reloj">00:00:00 Lunes 01, Enero, 2024</div>
-        <div id="contador">Visitas: <span id="visitas">0</span></div>
+        <div id="visit-counter">Visitas: 0</div>
         <button id="mode-toggle">Modo Oscuro</button>
     </div>
 
@@ -34,7 +34,7 @@
 
     <div id="search-container">
         <button id="buscador-btn">Buscar</button>
-        <div id="buscador" onmouseover="mantenerBuscador()" onmouseout="ocultarBuscador()">
+        <div id="buscador">
             <form action="https://www.google.com/search" method="get" target="_blank">
                 <input type="text" id="search-input" name="q" placeholder="Buscar en Google..." required>
                 <button type="submit">Buscar</button>
@@ -178,8 +178,6 @@
             <button type="submit">Enviar</button>
         </form>
     </section>
-
-    <button id="inicio-btn-bottom" onclick="goToTop()">Inicio</button>
 
     <footer>
         <div id="social-media">
