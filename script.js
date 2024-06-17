@@ -13,29 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setInterval(actualizarReloj, 1000);
 
-    // Función para el contador de visitas
-    function obtenerContadorVisitas() {
-        if (isHomePage() && !sessionStorage.getItem('desdeBotonInicio')) {
-            let visitas = localStorage.getItem('contadorVisitas');
-            if (!visitas) {
-                visitas = 0;
-            }
-            visitas++;
-            localStorage.setItem('contadorVisitas', visitas);
-            document.getElementById('visitas').textContent = visitas;
-        } else {
-            const visitas = localStorage.getItem('contadorVisitas');
-            document.getElementById('visitas').textContent = visitas;
-        }
-        sessionStorage.removeItem('desdeBotonInicio');
-    }
-
-    function isHomePage() {
-        return window.location.pathname.includes('index.html');
-    }
-
-    obtenerContadorVisitas();
-
     // Función para cambiar entre modo oscuro y modo claro
     function toggleMode() {
         document.body.classList.toggle('dark-mode');
@@ -149,22 +126,21 @@ document.addEventListener('DOMContentLoaded', function() {
         locationDisplay.textContent = `Ubicación: ${ubicacion}`;
     }
 
+    function actualizarContador() {
+        let visitas = localStorage.getItem('visitas');
+        if (!visitas) {
+            visitas = 0;
+        }
+        const deviceID = localStorage.getItem('deviceID');
+        if (!deviceID) {
+            const newDeviceID = 'device-' + Date.now();
+            localStorage.setItem('deviceID', newDeviceID);
+            visitas++;
+            localStorage.setItem('visitas', visitas);
+        }
+        document.getElementById('visit-counter').textContent = `Visitas: ${visitas}`;
+    }
+
     pedirUbicacion();
-
-    // Función para desplazarse al inicio de la página
-    function goToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    document.getElementById('inicio-btn-bottom').addEventListener('click', goToTop);
-
-    // No aumentar el contador al presionar el botón de inicio
-    function irAInicio() {
-        sessionStorage.setItem('desdeBotonInicio', 'true');
-        window.location.href = 'index.html';
-    }
-
-    document.querySelectorAll('button[data-ignore-counter="true"]').forEach(button => {
-        button.addEventListener('click', irAInicio);
-    });
+    actualizarContador();
 });
