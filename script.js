@@ -84,48 +84,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector('#about-me h2').addEventListener('click', toggleAboutMe);
 
-    // Función para pedir la ubicación del usuario
-    function pedirUbicacion() {
-        if (!localStorage.getItem('ubicacion')) {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition((position) => {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    obtenerUbicacionGoogle(lat, lon);
-                });
-            } else {
-                alert('La geolocalización no es soportada por este navegador.');
-            }
+    // Función para mostrar la ubicación del usuario
+    function mostrarUbicacion() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                var url = `https://www.google.com/maps?q=${lat},${lng}`;
+                window.open(url, '_blank');
+            }, function(error) {
+                alert('Error al obtener la ubicación: ' + error.message);
+            });
         } else {
-            const ubicacion = JSON.parse(localStorage.getItem('ubicacion'));
-            mostrarUbicacion(ubicacion);
+            alert('Tu navegador no soporta geolocalización.');
         }
     }
 
-    function obtenerUbicacionGoogle(lat, lon) {
-        const geocoder = new google.maps.Geocoder();
-        const latlng = { lat: parseFloat(lat), lng: parseFloat(lon) };
+    document.getElementById('ubicacion-btn').addEventListener('click', mostrarUbicacion);
 
-        geocoder.geocode({ 'location': latlng }, (results, status) => {
-            if (status === 'OK') {
-                if (results[0]) {
-                    const ubicacion = results[0].formatted_address;
-                    localStorage.setItem('ubicacion', JSON.stringify({ lat, lon, ubicacion }));
-                    mostrarUbicacion({ lat, lon, ubicacion });
-                } else {
-                    alert('No se encontraron resultados.');
-                }
-            } else {
-                alert('Geocoder falló debido a: ' + status);
-            }
-        });
-    }
-
-    function mostrarUbicacion({ lat, lon, ubicacion }) {
-        const locationDisplay = document.getElementById('location-display');
-        locationDisplay.textContent = `Ubicación: ${ubicacion}`;
-    }
-
+    // Función para actualizar el contador de visitas
     function actualizarContador() {
         let visitas = localStorage.getItem('visitas');
         if (!visitas) {
@@ -141,6 +118,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('visit-counter').textContent = `Visitas: ${visitas}`;
     }
 
-    pedirUbicacion();
     actualizarContador();
 });
