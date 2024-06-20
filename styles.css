@@ -1,4 +1,4 @@
-/* Estilo general */
+/* Estilo de otros elementos */
 body {
     font-family: 'Orbitron', Arial, sans-serif;
     margin: 0;
@@ -43,6 +43,7 @@ body {
 }
 
 #reloj {
+    order: 2;
     flex-grow: 1;
     text-align: center;
     font-size: 28px; /* Tamaño más grande */
@@ -51,7 +52,17 @@ body {
     text-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
 }
 
+#location-display {
+    order: 1;
+    text-align: left;
+    font-size: 16px;
+    color: #00bfff;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
+    margin-left: 20px; /* Ajusta el margen si es necesario */
+}
+
 #visit-counter {
+    order: 3;
     font-size: 20px; /* Tamaño más grande */
     color: #00bfff;
     text-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
@@ -70,10 +81,26 @@ body {
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.3s;
-    margin-right: 20px; /* Ajusta el margen si es necesario */
+    margin-right: 40px; /* Mueve el botón más a la derecha */
 }
 
 #mode-toggle:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+#ubicacion-btn {
+    padding: 10px 15px; /* Tamaño más pequeño */
+    font-size: 14px; /* Fuente más pequeña */
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#ubicacion-btn:hover {
     background-color: #0056b3;
     transform: scale(1.1);
 }
@@ -380,76 +407,5 @@ form button:hover {
     }
     to {
         opacity: 1;
-    }
-}
-
-/* Estilos responsivos */
-@media (max-width: 768px) {
-    #header {
-        flex-direction: column;
-        height: auto;
-    }
-
-    #reloj {
-        order: 3;
-        font-size: 20px;
-        margin: 10px 0;
-    }
-
-    #visit-counter {
-        order: 2;
-        margin-right: 0;
-        margin-bottom: 10px;
-        position: static;
-    }
-
-    #mode-toggle {
-        order: 4;
-        margin-right: 0;
-    }
-
-    .botones {
-        grid-template-columns: 1fr;
-    }
-
-    #left-image {
-        order: 1;
-        margin: 10px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 24px;
-    }
-
-    #mode-toggle, #ubicacion-btn {
-        font-size: 14px;
-        padding: 8px 15px;
-    }
-
-    #reloj {
-        font-size: 18px;
-    }
-
-    .boton, .botones button, .inicio-button {
-        font-size: 16px;
-        padding: 10px 15px;
-    }
-
-    form input, form textarea, form select {
-        width: 100%;
-    }
-
-    form {
-        padding: 10px;
-    }
-
-    section {
-        width: 95%;
-    }
-
-    article img {
-        max-width: 100%;
     }
 }
