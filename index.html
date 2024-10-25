@@ -2,11 +2,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-	<link rel="icon" href="CE" type="image/x-icon">
     <title>Calculadora de Mezcla de Líquidos y Conversores</title>
+    <!-- Fuente de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Iconos de Font Awesome para iconografía relacionada con física -->
+    <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /* Variables de Color */
         :root {
@@ -57,14 +58,14 @@
             background-color: #ffffff;
             padding: 40px;
             border-radius: 12px;
-            max-width: 1000px;
+            max-width: 1200px; /* Aumentado para acomodar más contenido */
             margin: 60px auto;
             box-shadow: 0 8px 20px var(--sombra);
             border: 1px solid var(--color-borde);
         }
 
         /* Secciones de Selección y Conversores */
-        .liquid-selection, .converter {
+        .liquid-selection {
             display: flex;
             flex-direction: row;
             gap: 30px;
@@ -73,7 +74,7 @@
         }
 
         /* Subdivisiones Dentro de las Secciones */
-        .liquid-selection div, .converter div {
+        .liquid-selection .liquid-group {
             flex: 1 1 45%;
             display: flex;
             flex-direction: column;
@@ -81,10 +82,17 @@
 
         /* Etiquetas */
         label {
-            margin-bottom: 8px;
+            margin-bottom: 10px; /* Incrementado de 8px a 10px */
             color: var(--color-principal);
             font-weight: 500;
             font-size: 16px;
+        }
+
+        /* Contenedor para cada etiqueta y campo de entrada */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px; /* Incrementado de 20px a 30px para mayor espacio */
         }
 
         /* Campos de Selección e Ingreso */
@@ -94,6 +102,9 @@
             border-radius: 6px;
             font-size: 16px;
             transition: border-color 0.3s, box-shadow 0.3s;
+            width: 100%;
+            box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+            height: 50px; /* Aumentado para mayor visibilidad */
         }
 
         select:focus, input:focus {
@@ -154,19 +165,44 @@
             border: 1px solid #ef9a9a;
         }
 
+        /* Contenedor de Conversores */
+        .converters-container {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            justify-content: space-between;
+        }
+
         /* Conversores */
         .converter {
             background-color: var(--color-fondo);
             padding: 25px;
             border-radius: 8px;
-            margin-top: 50px;
             box-shadow: 0 4px 12px var(--sombra-converter);
             border: 1px solid var(--color-borde);
+            flex: 1 1 30%; /* Ajustado para acomodar tres conversores */
+            min-width: 280px; /* Asegura que no se encoja demasiado en pantallas pequeñas */
+            box-sizing: border-box;
         }
 
         .converter h2 {
             color: var(--color-principal);
             margin-bottom: 20px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .converter h2::before {
+            content: '\f0c2'; /* Icono de fisico */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 20px;
+            color: var(--color-secundario);
         }
 
         .converter p {
@@ -176,22 +212,22 @@
             font-size: 18px;
         }
 
-        /* Iconos en las secciones */
-        .converter h2::before {
-            content: '\f0c2'; /* Icono de fisico */
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            margin-right: 10px;
-        }
-
         /* Responsividad */
         @media (max-width: 768px) {
-            .liquid-selection, .converter {
+            .liquid-selection {
                 flex-direction: column;
             }
 
-            .liquid-selection div, .converter div {
+            .liquid-selection .liquid-group {
                 width: 100%;
+            }
+
+            .converters-container {
+                flex-direction: column;
+            }
+
+            .converter {
+                flex: 1 1 100%;
             }
         }
 
@@ -206,16 +242,6 @@
             border-color: var(--color-acento);
         }
 
-        /* Ajuste de márgenes para mejor espaciado */
-        .liquid-selection div, .converter div {
-            margin-bottom: 20px;
-        }
-
-        /* Mejorar accesibilidad: aumento de contraste */
-        .result.success, .result.error {
-            color: inherit;
-        }
-
         /* Botones con iconos */
         .btn-icon {
             display: flex;
@@ -223,6 +249,16 @@
             justify-content: center;
         }
 
+        /* Estilos específicos para los selectores estándar */
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path fill="%230d47a1" d="M0 0l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px 5px;
+        }
+
+        /* Eliminar cualquier estilo residual de Select2 */
     </style>
 </head>
 <body>
@@ -231,30 +267,42 @@
     <div class="container">
         <!-- Calculadora de Mezcla de Líquidos -->
         <div class="liquid-selection">
-            <div>
-                <label for="liquid1">Líquido 1:</label>
-                <select id="liquid1">
-                    <option value="" disabled selected>Selecciona un líquido</option>
-                </select>
+            <div class="liquid-group">
+                <div class="input-group">
+                    <label for="liquid1">Líquido 1:</label>
+                    <select id="liquid1">
+                        <option value="" disabled selected>Selecciona un líquido</option>
+                    </select>
+                </div>
 
-                <label for="mass1">Masa del Líquido 1 (kg):</label>
-                <input type="number" id="mass1" placeholder="Ejemplo: 90" min="0" step="any">
+                <div class="input-group">
+                    <label for="mass1">Masa del Líquido 1 (kg):</label>
+                    <input type="number" id="mass1" placeholder="Ejemplo: 90" min="0" step="any">
+                </div>
 
-                <label for="temp1">Temperatura Inicial del Líquido 1 (°C):</label>
-                <input type="number" id="temp1" placeholder="Ejemplo: 60" step="any">
+                <div class="input-group">
+                    <label for="temp1">Temperatura Inicial del Líquido 1 (°C):</label>
+                    <input type="number" id="temp1" placeholder="Ejemplo: 60" step="any">
+                </div>
             </div>
 
-            <div>
-                <label for="liquid2">Líquido 2:</label>
-                <select id="liquid2">
-                    <option value="" disabled selected>Selecciona un líquido</option>
-                </select>
+            <div class="liquid-group">
+                <div class="input-group">
+                    <label for="liquid2">Líquido 2:</label>
+                    <select id="liquid2">
+                        <option value="" disabled selected>Selecciona un líquido</option>
+                    </select>
+                </div>
 
-                <label for="mass2">Masa del Líquido 2 (kg):</label>
-                <input type="number" id="mass2" placeholder="Ejemplo: 40" min="0" step="any">
+                <div class="input-group">
+                    <label for="mass2">Masa del Líquido 2 (kg):</label>
+                    <input type="number" id="mass2" placeholder="Ejemplo: 40" min="0" step="any">
+                </div>
 
-                <label for="temp2">Temperatura Inicial del Líquido 2 (°C):</label>
-                <input type="number" id="temp2" placeholder="Ejemplo: 10" step="any">
+                <div class="input-group">
+                    <label for="temp2">Temperatura Inicial del Líquido 2 (°C):</label>
+                    <input type="number" id="temp2" placeholder="Ejemplo: 10" step="any">
+                </div>
             </div>
         </div>
 
@@ -262,109 +310,139 @@
 
         <div id="result" class="result" style="display: none;"></div>
 
-        <!-- Conversor de Unidades de Masa -->
-        <div class="converter">
-            <h2>Conversor de Unidades de Masa</h2>
-            <label for="massInput">Cantidad:</label>
-            <input type="number" id="massInput" placeholder="Ingresa la cantidad" min="0" step="any">
-            
-            <label for="massFrom">Desde:</label>
-            <select id="massFrom">
-                <option value="" disabled selected>Selecciona la unidad de origen</option>
-                <option value="mg">Miligramos (mg)</option>
-                <option value="g">Gramos (g)</option>
-                <option value="kg">Kilogramos (kg)</option>
-                <option value="t">Toneladas métricas (t)</option>
-                <option value="lb">Libras (lb)</option>
-                <option value="oz">Onzas (oz)</option>
-                <option value="st">Stones (st)</option>
-            </select>
+        <!-- Contenedor de Conversores -->
+        <div class="converters-container">
+            <!-- Conversor de Unidades de Masa -->
+            <div class="converter">
+                <h2>Conversor de Unidades de Masa</h2>
+                <div class="input-group">
+                    <label for="massInput">Cantidad:</label>
+                    <input type="number" id="massInput" placeholder="Ingresa la cantidad" min="0" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label for="massFrom">Desde:</label>
+                    <select id="massFrom">
+                        <option value="" disabled selected>Selecciona la unidad de origen</option>
+                        <option value="mg">Miligramos (mg)</option>
+                        <option value="g">Gramos (g)</option>
+                        <option value="kg">Kilogramos (kg)</option>
+                        <option value="t">Toneladas métricas (t)</option>
+                        <option value="lb">Libras (lb)</option>
+                        <option value="oz">Onzas (oz)</option>
+                        <option value="st">Stones (st)</option>
+                    </select>
+                </div>
 
-            <label for="massTo">Hasta:</label>
-            <select id="massTo">
-                <option value="" disabled selected>Selecciona la unidad de destino</option>
-                <option value="mg">Miligramos (mg)</option>
-                <option value="g">Gramos (g)</option>
-                <option value="kg">Kilogramos (kg)</option>
-                <option value="t">Toneladas métricas (t)</option>
-                <option value="lb">Libras (lb)</option>
-                <option value="oz">Onzas (oz)</option>
-                <option value="st">Stones (st)</option>
-            </select>
-            
-            <button onclick="convertMass()" class="btn-icon"><i class="fas fa-exchange-alt"></i> Convertir Masa</button>
-            <p>Resultado: <span id="massResult">0</span></p>
-        </div>
+                <div class="input-group">
+                    <label for="massTo">Hasta:</label>
+                    <select id="massTo">
+                        <option value="" disabled selected>Selecciona la unidad de destino</option>
+                        <option value="mg">Miligramos (mg)</option>
+                        <option value="g">Gramos (g)</option>
+                        <option value="kg">Kilogramos (kg)</option>
+                        <option value="t">Toneladas métricas (t)</option>
+                        <option value="lb">Libras (lb)</option>
+                        <option value="oz">Onzas (oz)</option>
+                        <option value="st">Stones (st)</option>
+                    </select>
+                </div>
+                
+                <button onclick="convertMass()" class="btn-icon"><i class="fas fa-exchange-alt"></i> Convertir Masa</button>
+                <p>Resultado: <span id="massResult">0</span></p>
+            </div>
 
-        <!-- Conversor de Temperaturas -->
-        <div class="converter">
-            <h2>Conversor de Temperaturas</h2>
-            <label for="tempInput">Temperatura:</label>
-            <input type="number" id="tempInput" placeholder="Ingresa la temperatura" step="any">
-            
-            <label for="tempFrom">Desde:</label>
-            <select id="tempFrom">
-                <option value="" disabled selected>Selecciona la escala de origen</option>
-                <option value="C">Celsius (°C)</option>
-                <option value="K">Kelvin (K)</option>
-                <option value="F">Fahrenheit (°F)</option>
-                <option value="R">Rankine (°R)</option>
-            </select>
+            <!-- Conversor de Temperaturas -->
+            <div class="converter">
+                <h2>Conversor de Temperaturas</h2>
+                <div class="input-group">
+                    <label for="tempInput">Temperatura:</label>
+                    <input type="number" id="tempInput" placeholder="Ingresa la temperatura" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label for="tempFrom">Desde:</label>
+                    <select id="tempFrom">
+                        <option value="" disabled selected>Selecciona la escala de origen</option>
+                        <option value="C">Celsius (°C)</option>
+                        <option value="K">Kelvin (K)</option>
+                        <option value="F">Fahrenheit (°F)</option>
+                        <option value="R">Rankine (°R)</option>
+                    </select>
+                </div>
 
-            <label for="tempTo">Hasta:</label>
-            <select id="tempTo">
-                <option value="" disabled selected>Selecciona la escala de destino</option>
-                <option value="C">Celsius (°C)</option>
-                <option value="K">Kelvin (K)</option>
-                <option value="F">Fahrenheit (°F)</option>
-                <option value="R">Rankine (°R)</option>
-            </select>
-            
-            <button onclick="convertTemperature()" class="btn-icon"><i class="fas fa-temperature-high"></i> Convertir Temperatura</button>
-            <p>Resultado: <span id="tempResult">0</span></p>
-        </div>
+                <div class="input-group">
+                    <label for="tempTo">Hasta:</label>
+                    <select id="tempTo">
+                        <option value="" disabled selected>Selecciona la escala de destino</option>
+                        <option value="C">Celsius (°C)</option>
+                        <option value="K">Kelvin (K)</option>
+                        <option value="F">Fahrenheit (°F)</option>
+                        <option value="R">Rankine (°R)</option>
+                    </select>
+                </div>
+                
+                <button onclick="convertTemperature()" class="btn-icon"><i class="fas fa-temperature-high"></i> Convertir Temperatura</button>
+                <p>Resultado: <span id="tempResult">0</span></p>
+            </div>
 
-        <!-- Conversor de Unidades de Volumen -->
-        <div class="converter">
-            <h2>Conversor de Unidades de Volumen</h2>
-            <label for="volumeInput">Cantidad:</label>
-            <input type="number" id="volumeInput" placeholder="Ingresa la cantidad" min="0" step="any">
-            
-            <label for="volumeFrom">Desde:</label>
-            <select id="volumeFrom">
-                <option value="" disabled selected>Selecciona la unidad de origen</option>
-                <option value="ml">Mililitros (mL)</option>
-                <option value="l">Litros (L)</option>
-                <option value="m3">Metros cúbicos (m³)</option>
-                <option value="gal">Galones (gal)</option>
-                <option value="fl_oz">Onzas líquidas (fl oz)</option>
-                <option value="cup">Tazas (cup)</option>
-                <option value="pt">Pintas (pt)</option>
-                <option value="qt">Cuartos (qt)</option>
-                <option value="gal_imp">Galones Imperiales (gal imp)</option>
-            </select>
+            <!-- Conversor de Unidades de Volumen -->
+            <div class="converter">
+                <h2>Conversor de Unidades de Volumen</h2>
+                <div class="input-group">
+                    <label for="volumeInput">Cantidad:</label>
+                    <input type="number" id="volumeInput" placeholder="Ingresa la cantidad" min="0" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label for="volumeFrom">Desde:</label>
+                    <select id="volumeFrom">
+                        <option value="" disabled selected>Selecciona la unidad de origen</option>
+                        <option value="ml">Mililitros (ml)</option>
+                        <option value="l">Litros (l)</option>
+                        <option value="m3">Metros cúbicos (m³)</option>
+                        <option value="tsp">Cucharaditas (tsp)</option>
+                        <option value="tbsp">Cucharadas (tbsp)</option>
+                        <option value="fl oz">Onzas líquidas (fl oz)</option>
+                        <option value="cup">Tazas (cup)</option>
+                        <option value="pt">Pintas (pt)</option>
+                        <option value="qt">Cuartos (qt)</option>
+                        <option value="gal">Galones (gal)</option>
+                        <option value="cubic_in">Pulgadas cúbicas (in³)</option>
+                        <option value="cubic_ft">Pies cúbicos (ft³)</option>
+                    </select>
+                </div>
 
-            <label for="volumeTo">Hasta:</label>
-            <select id="volumeTo">
-                <option value="" disabled selected>Selecciona la unidad de destino</option>
-                <option value="ml">Mililitros (mL)</option>
-                <option value="l">Litros (L)</option>
-                <option value="m3">Metros cúbicos (m³)</option>
-                <option value="gal">Galones (gal)</option>
-                <option value="fl_oz">Onzas líquidas (fl oz)</option>
-                <option value="cup">Tazas (cup)</option>
-                <option value="pt">Pintas (pt)</option>
-                <option value="qt">Cuartos (qt)</option>
-                <option value="gal_imp">Galones Imperiales (gal imp)</option>
-            </select>
-            
-            <button onclick="convertVolume()" class="btn-icon"><i class="fas fa-tachometer-alt"></i> Convertir Volumen</button>
-            <p>Resultado: <span id="volumeResult">0</span></p>
+                <div class="input-group">
+                    <label for="volumeTo">Hasta:</label>
+                    <select id="volumeTo">
+                        <option value="" disabled selected>Selecciona la unidad de destino</option>
+                        <option value="ml">Mililitros (ml)</option>
+                        <option value="l">Litros (l)</option>
+                        <option value="m3">Metros cúbicos (m³)</option>
+                        <option value="tsp">Cucharaditas (tsp)</option>
+                        <option value="tbsp">Cucharadas (tbsp)</option>
+                        <option value="fl oz">Onzas líquidas (fl oz)</option>
+                        <option value="cup">Tazas (cup)</option>
+                        <option value="pt">Pintas (pt)</option>
+                        <option value="qt">Cuartos (qt)</option>
+                        <option value="gal">Galones (gal)</option>
+                        <option value="cubic_in">Pulgadas cúbicas (in³)</option>
+                        <option value="cubic_ft">Pies cúbicos (ft³)</option>
+                    </select>
+                </div>
+                
+                <button onclick="convertVolume()" class="btn-icon"><i class="fas fa-exchange-alt"></i> Convertir Volumen</button>
+                <p>Resultado: <span id="volumeResult">0</span></p>
+            </div>
         </div>
     </div>
 
     <!-- Icono de Font Awesome para Física -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-i8F6DABTuzk+0D6f/VtuBci1rBXVQdR1E7u09IytRShhWufFBSZjdRgX2JAFJWeEF5j6rUBqJkHk3m+XGqDgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Select2 JS Eliminado -->
 
     <script>
         // Lista de líquidos con sus capacidades caloríficas específicas (kJ/kg·°C)
@@ -532,7 +610,6 @@
             { id: 150, name: "Etilbenceno", c: 1.70 } // Asignado un valor aproximado
         ];
 
-
         // Eliminar duplicados basados en el nombre del líquido
         const uniqueLiquidsMap = new Map();
         liquids.forEach(item => {
@@ -641,7 +718,6 @@
             // Se han eliminado todas las referencias a "Aceite de menta"
         ];
 
-
         // Crear un objeto para pares incompatibles para búsqueda más rápida
         const incompatibleSet = new Set();
         incompatiblePairs.forEach(pair => {
@@ -672,10 +748,9 @@
                 option2.text = liquid.name;
                 liquid2.add(option2);
             });
-        }
 
-        // Llamar a la función al cargar la página
-        window.onload = loadLiquids;
+            // Ya no se utiliza Select2, así que no hay inicialización necesaria
+        }
 
         // Función para verificar compatibilidad
         function areCompatible(liquidA, liquidB) {
@@ -916,12 +991,15 @@
                 ml: 0.001,          // Mililitros a litros
                 l: 1,               // Litros a litros
                 m3: 1000,           // Metros cúbicos a litros
-                gal: 3.78541,       // Galones (US) a litros
-                fl_oz: 0.0295735,   // Onzas líquidas (US) a litros
-                cup: 0.24,          // Tazas (cup) a litros
-                pt: 0.473176,       // Pintas (US) a litros
-                qt: 0.946353,       // Cuartos (US) a litros
-                gal_imp: 4.54609    // Galones Imperiales a litros
+                tsp: 0.00492892,    // Cucharaditas a litros
+                tbsp: 0.0147868,    // Cucharadas a litros
+                "fl oz": 0.0295735, // Onzas líquidas a litros
+                cup: 0.24,          // Tazas a litros
+                pt: 0.473176,       // Pintas a litros
+                qt: 0.946353,       // Cuartos a litros
+                gal: 3.78541,       // Galones a litros
+                cubic_in: 0.0163871,// Pulgadas cúbicas a litros
+                cubic_ft: 28.3168    // Pies cúbicos a litros
             };
 
             // Convertir la cantidad a litros
@@ -932,15 +1010,18 @@
 
             // Mostrar resultado con la unidad correspondiente
             const unitLabels = {
-                ml: "mL",
-                l: "L",
+                ml: "ml",
+                l: "l",
                 m3: "m³",
-                gal: "gal",
-                fl_oz: "fl oz",
+                tsp: "tsp",
+                tbsp: "tbsp",
+                "fl oz": "fl oz",
                 cup: "cup",
                 pt: "pt",
                 qt: "qt",
-                gal_imp: "gal imp"
+                gal: "gal",
+                cubic_in: "in³",
+                cubic_ft: "ft³"
             };
 
             resultSpan.textContent = `${convertedVolume.toFixed(4)} ${unitLabels[volumeTo]}`;
@@ -963,6 +1044,9 @@
             console.table(invalidPairs);
         }
         // ----- Fin del Script de Verificación -----
+
+        // Llamar a la función al cargar la página
+        window.onload = loadLiquids;
     </script>
 
 </body>
