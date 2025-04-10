@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog de Psicología</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -18,9 +19,10 @@
       background-color: #f0f2f5;
     }
 
-    main {
+    .container {
       flex: 1;
-      padding: 2rem;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -40,10 +42,25 @@
     }
 
     .sidebar a {
-      color: white;
+      background-color: #6573c3;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 0.5rem 0;
+      text-align: center;
       text-decoration: none;
-      margin: 1rem 0;
+      color: white;
       font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #7986cb;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
     }
 
     article {
@@ -61,70 +78,5 @@
       padding: 1rem;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
     @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-      .sidebar {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <h1>Blog de Psicología</h1>
-      <p>Conocimiento para el bienestar emocional</p>
-    </header>
-
-    <main>
-      <article>
-        <h2>Inicio</h2>
-        <p>Bienvenido a nuestro blog de psicología. Aquí encontrarás información útil sobre salud mental y bienestar emocional.</p>
-      </article>
-
-      <article>
-        <h2>Formulario</h2>
-        <p>Puedes contactarnos llenando un formulario con tus datos y tus inquietudes. (Aquí podrías agregar un formulario real más adelante).</p>
-      </article>
-
-      <article>
-        <h2>Servicio que ofrece</h2>
-        <p>Ofrecemos orientación psicológica, talleres de crecimiento personal y recursos gratuitos sobre salud mental.</p>
-      </article>
-
-      <article>
-        <h2>Ubicación</h2>
-        <p>Estamos ubicados en Hidalgo, México. También ofrecemos sesiones virtuales para todo el país.</p>
-      </article>
-
-      <article>
-        <h2>Publicar: ¿Qué es la psicología?</h2>
-        <p>La psicología es la ciencia que estudia el comportamiento y los procesos mentales del ser humano. Nos ayuda a entender cómo pensamos, sentimos y actuamos.</p>
-      </article>
-    </main>
-
-    <footer>
-      <p>&copy; 2025 Blog de Psicología. Todos los derechos reservados.</p>
-    </footer>
-  </div>
-
-  <aside class="sidebar">
-    <a href="#">Inicio</a>
-    <a href="#">Formulario</a>
-    <a href="#">Servicio que ofrece</a>
-    <a href="#">Ubicación</a>
-    <a href="#">Publicar qué es la psicología</a>
-  </aside>
-</body>
-</html>
+      body
