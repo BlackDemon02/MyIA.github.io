@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog de Psicología</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #f4f6f8;
     }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f0f2f5;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+
     header {
       background-color: #5c6bc0;
       color: white;
-      padding: 1rem;
+      padding: 1.5rem;
       text-align: center;
     }
-    nav {
+
+    .sidebar {
+      width: 250px;
       background-color: #3f51b5;
+      color: white;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 0.5rem 0;
+      flex-direction: column;
+      padding: 2rem 1rem;
     }
-    nav a {
+
+    .sidebar a {
       color: white;
       text-decoration: none;
+      margin: 1rem 0;
       font-weight: bold;
     }
-    main {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
+
     article {
       background-color: white;
       padding: 1.5rem;
@@ -41,45 +53,78 @@
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    article h2 {
-      color: #333;
-    }
+
     footer {
       background-color: #3f51b5;
       color: white;
       text-align: center;
       padding: 1rem;
-      margin-top: 3rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Blog de Psicología</h1>
-    <p>Reflexiones y consejos para el bienestar emocional</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>Blog de Psicología</h1>
+      <p>Conocimiento para el bienestar emocional</p>
+    </header>
 
-  <nav>
+    <main>
+      <article>
+        <h2>Inicio</h2>
+        <p>Bienvenido a nuestro blog de psicología. Aquí encontrarás información útil sobre salud mental y bienestar emocional.</p>
+      </article>
+
+      <article>
+        <h2>Formulario</h2>
+        <p>Puedes contactarnos llenando un formulario con tus datos y tus inquietudes. (Aquí podrías agregar un formulario real más adelante).</p>
+      </article>
+
+      <article>
+        <h2>Servicio que ofrece</h2>
+        <p>Ofrecemos orientación psicológica, talleres de crecimiento personal y recursos gratuitos sobre salud mental.</p>
+      </article>
+
+      <article>
+        <h2>Ubicación</h2>
+        <p>Estamos ubicados en Hidalgo, México. También ofrecemos sesiones virtuales para todo el país.</p>
+      </article>
+
+      <article>
+        <h2>Publicar: ¿Qué es la psicología?</h2>
+        <p>La psicología es la ciencia que estudia el comportamiento y los procesos mentales del ser humano. Nos ayuda a entender cómo pensamos, sentimos y actuamos.</p>
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Blog de Psicología. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <aside class="sidebar">
     <a href="#">Inicio</a>
-    <a href="#">Sobre mí</a>
-    <a href="#">Artículos</a>
-    <a href="#">Contacto</a>
-  </nav>
-
-  <main>
-    <article>
-      <h2>¿Qué es la salud mental?</h2>
-      <p>La salud mental es un estado de bienestar en el cual una persona puede afrontar las tensiones normales de la vida, trabajar de forma productiva y contribuir a su comunidad.</p>
-    </article>
-
-    <article>
-      <h2>Cómo manejar la ansiedad</h2>
-      <p>La ansiedad es una emoción normal, pero cuando se vuelve constante puede afectar tu calidad de vida. Aquí te damos algunas estrategias prácticas para manejarla...</p>
-    </article>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Blog de Psicología. Todos los derechos reservados.</p>
-  </footer>
+    <a href="#">Formulario</a>
+    <a href="#">Servicio que ofrece</a>
+    <a href="#">Ubicación</a>
+    <a href="#">Publicar qué es la psicología</a>
+  </aside>
 </body>
 </html>
