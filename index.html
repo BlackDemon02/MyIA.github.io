@@ -153,29 +153,29 @@
   <h2>Formulario</h2>
   <p>Puedes contactarnos llenando un formulario con tus datos y tus inquietudes.</p>
 
-  <form action="#" method="post" style="margin-top: 1rem;">
+  <form id="contactForm" onsubmit="enviarCorreo(); return false;" style="margin-top: 1rem;">
     <label for="edad">1) ¿Qué edad tienes?</label><br />
     <input type="number" id="edad" name="edad" min="1" max="120" required /><br /><br />
 
     <label for="sexo">2) ¿Qué sexo eres?</label><br />
     <select id="sexo" name="sexo" required>
       <option value="">Selecciona una opción</option>
-      <option value="femenino">Femenino</option>
-      <option value="masculino">Masculino</option>
-      <option value="otro">Otro</option>
-      <option value="prefiero_no_decirlo">Prefiero no decirlo</option>
+      <option value="Femenino">Femenino</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Otro">Otro</option>
+      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
     </select><br /><br />
 
     <label>3) ¿Consideras la psicología importante?</label><br />
-    <input type="radio" id="psico_si" name="psicologia_importante" value="sí" required />
+    <input type="radio" id="psico_si" name="psicologia_importante" value="Sí" required />
     <label for="psico_si">Sí</label><br />
-    <input type="radio" id="psico_no" name="psicologia_importante" value="no" />
+    <input type="radio" id="psico_no" name="psicologia_importante" value="No" />
     <label for="psico_no">No</label><br /><br />
 
     <label>4) ¿Crees que una terapia te ayudará a mejorar?</label><br />
-    <input type="radio" id="terapia_si" name="terapia_ayuda" value="sí" required />
+    <input type="radio" id="terapia_si" name="terapia_ayuda" value="Sí" required />
     <label for="terapia_si">Sí</label><br />
-    <input type="radio" id="terapia_no" name="terapia_ayuda" value="no" />
+    <input type="radio" id="terapia_no" name="terapia_ayuda" value="No" />
     <label for="terapia_no">No</label><br /><br />
 
     <label for="problema">5) ¿Qué problema crees tener?</label><br />
@@ -183,7 +183,29 @@
 
     <button type="submit">Enviar</button>
   </form>
+
+  <script>
+    function enviarCorreo() {
+      const edad = document.getElementById("edad").value;
+      const sexo = document.getElementById("sexo").value;
+      const psicologia = document.querySelector('input[name="psicologia_importante"]:checked').value;
+      const terapia = document.querySelector('input[name="terapia_ayuda"]:checked').value;
+      const problema = document.getElementById("problema").value;
+
+      const asunto = "Formulario de Contacto - Blog de Psicología";
+      const cuerpo = `Edad: ${edad}%0D%0A` +
+                     `Sexo: ${sexo}%0D%0A` +
+                     `¿Consideras la psicología importante?: ${psicologia}%0D%0A` +
+                     `¿Crees que una terapia te ayudará?: ${terapia}%0D%0A` +
+                     `Problema que cree tener: ${problema}`;
+
+      const mailtoLink = `mailto:menvejul55@hotmail.com?subject=${encodeURIComponent(asunto)}&body=${cuerpo}`;
+
+      window.location.href = mailtoLink;
+    }
+  </script>
 </article>
+
 
 
       <article id="servicio">
