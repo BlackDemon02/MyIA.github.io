@@ -1,165 +1,106 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog de Psicología</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
 
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+  }
+
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px; /* Espacio para el sidebar fijo */
+  }
+
+  header {
+    background-color: #5c6bc0;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #3f51b5;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+  .sidebar a {
+    background-color: #6573c3;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+
+  .sidebar a:hover {
+    background-color: #7986cb;
+  }
+
+  main {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  article {
+    background-color: white;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  footer {
+    background-color: #3f51b5;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  @media (max-width: 768px) {
     body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      min-height: 100vh;
-      background-color: #f0f2f5;
-    }
-
-    .container {
-      flex: 1;
-      display: flex;
       flex-direction: column;
-    }
-
-    header {
-      background-color: #5c6bc0;
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
     }
 
     .sidebar {
-      width: 250px;
-      background-color: #3f51b5;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1rem;
+      position: relative;
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      height: auto;
+      margin-left: 0;
+    }
+
+    .container {
+      margin-left: 0;
     }
 
     .sidebar a {
-      background-color: #6573c3;
-      padding: 10px;
-      border-radius: 5px;
-      margin: 0.5rem 0;
-      text-align: center;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: background-color 0.3s;
+      margin: 0.5rem;
+      flex: 1 1 40%;
     }
-
-    .sidebar a:hover {
-      background-color: #7986cb;
-    }
-
-    main {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    article {
-      background-color: white;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      background-color: #3f51b5;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .sidebar a {
-        margin: 0.5rem;
-        flex: 1 1 40%;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <header>
-      <h1>Blog de Psicología</h1>
-      <p>Psicología Educativa | Psic. Julio A. Vega Mendoza</p>
-      <p>Conocimiento para el bienestar emocional</p>
-    </header>
-
-    <main>
-      <article id="inicio">
-        <h2>Inicio</h2>
-        <p>Bienvenido a nuestro blog de psicología. Aquí encontrarás información útil sobre salud mental y bienestar emocional.</p>
-      </article>
-
-      <article id="formulario">
-        <h2>Formulario</h2>
-        <p>Puedes contactarnos llenando un formulario con tus datos y tus inquietudes. (Aquí podrías agregar un formulario real más adelante).</p>
-      </article>
-
-      <article id="servicio">
-        <h2>Servicio que ofrece</h2>
-        <p>Ofrecemos orientación psicológica, talleres de crecimiento personal y recursos gratuitos sobre salud mental.</p>
-      </article>
-
-      <article id="ubicacion">
-        <h2>Ubicación</h2>
-        <p>Estamos ubicados en Hidalgo, México. También ofrecemos sesiones virtuales para todo el país.</p>
-      </article>
-
-      <article id="publicar">
-        <h2>¿Qué es la psicología?</h2>
-        <p>La psicología es la ciencia que estudia el comportamiento y los procesos mentales del ser humano. Nos ayuda a entender cómo pensamos, sentimos y actuamos.</p>
-      </article>
-
-      <article id="publicaciones">
-        <h2>Publicaciones</h2>
-        <p>Últimos artículos publicados:</p>
-
-        <div style="margin-top: 1rem;">
-          <h3>🧠 ¿Cómo mejorar tu autoestima?</h3>
-          <p>La autoestima es fundamental para nuestro desarrollo. Aquí tienes algunos consejos para fortalecerla...</p>
-        </div>
-
-        <div style="margin-top: 2rem;">
-          <h3>😌 Técnicas de relajación para el estrés</h3>
-          <p>Aprende a calmar tu mente con técnicas simples y efectivas de relajación.</p>
-        </div>
-      </article>
-    </main>
-
-    <footer>
-      <p>&copy; 2025 Blog de Psicología. Todos los derechos reservados.</p>
-    </footer>
-  </div>
-
-  <aside class="sidebar">
-    <a href="#inicio">Inicio</a>
-    <a href="#formulario">Formulario</a>
-    <a href="#servicio">Servicio que ofrece</a>
-    <a href="#ubicacion">Ubicación</a>
-    <a href="#publicar">¿Qué es la psicología?</a>
-    <a href="#publicaciones">Publicaciones</a>
-  </aside>
-</body>
-</html>
+  }
+</style>
