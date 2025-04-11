@@ -23,7 +23,7 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      margin-left: 250px; /* espacio para el sidebar fijo */
+      margin-left: 250px;
     }
 
     header {
@@ -150,40 +150,71 @@
       </article>
 
       <article id="formulario">
-  <h2>Formulario</h2>
-  <p>Puedes contactarnos llenando un formulario con tus datos y tus inquietudes.</p>
+        <h2>Formulario</h2>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $edad = $_POST['edad'];
+          $sexo = $_POST['sexo'];
+          $psicologia = $_POST['psicologia_importante'];
+          $terapia = $_POST['terapia_ayuda'];
+          $problema = $_POST['problema'];
 
-  <form action="#" method="post" style="margin-top: 1rem;">
-    <label for="edad">1) ¿Qué edad tienes?</label><br />
-    <input type="number" id="edad" name="edad" min="1" max="120" required /><br /><br />
+          $para = "menvejul55@hotmail.com";
+          $asunto = "Nuevo formulario del blog de psicología";
 
-    <label for="sexo">2) ¿Qué sexo eres?</label><br />
-    <select id="sexo" name="sexo" required>
-      <option value="">Selecciona una opción</option>
-      <option value="femenino">Femenino</option>
-      <option value="masculino">Masculino</option>
-      <option value="otro">Otro</option>
-      <option value="prefiero_no_decirlo">Prefiero no decirlo</option>
-    </select><br /><br />
+          $mensaje = "
+          Has recibido una nueva respuesta del formulario:
 
-    <label>3) ¿Consideras la psicología importante?</label><br />
-    <input type="radio" id="psico_si" name="psicologia_importante" value="sí" required />
-    <label for="psico_si">Sí</label><br />
-    <input type="radio" id="psico_no" name="psicologia_importante" value="no" />
-    <label for="psico_no">No</label><br /><br />
+          Edad: $edad
+          Sexo: $sexo
+          ¿Considera la psicología importante?: $psicologia
+          ¿Cree que una terapia le ayudará?: $terapia
+          Problema que cree tener: $problema
+          ";
 
-    <label>4) ¿Crees que una terapia te ayudará a mejorar?</label><br />
-    <input type="radio" id="terapia_si" name="terapia_ayuda" value="sí" required />
-    <label for="terapia_si">Sí</label><br />
-    <input type="radio" id="terapia_no" name="terapia_ayuda" value="no" />
-    <label for="terapia_no">No</label><br /><br />
+          $cabeceras = "From: formulario@blogpsicologia.com\r\n";
+          $cabeceras .= "Reply-To: no-reply@blogpsicologia.com\r\n";
+          $cabeceras .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-    <label for="problema">5) ¿Qué problema crees tener?</label><br />
-    <textarea id="problema" name="problema" rows="4" cols="50" placeholder="Describe tu situación..." required></textarea><br /><br />
+          if (mail($para, $asunto, $mensaje, $cabeceras)) {
+            echo "<p style='color: green; font-weight: bold;'>Gracias por tu mensaje. Pronto nos pondremos en contacto.</p>";
+          } else {
+            echo "<p style='color: red; font-weight: bold;'>Hubo un error al enviar el formulario. Intenta nuevamente.</p>";
+          }
+        }
+        ?>
 
-    <button type="submit">Enviar</button>
-  </form>
-</article>
+        <form method="post" style="margin-top: 1rem;">
+          <label for="edad">1) ¿Qué edad tienes?</label><br />
+          <input type="number" id="edad" name="edad" required /><br /><br />
+
+          <label for="sexo">2) ¿Qué sexo eres?</label><br />
+          <select id="sexo" name="sexo" required>
+            <option value="">Selecciona una opción</option>
+            <option value="femenino">Femenino</option>
+            <option value="masculino">Masculino</option>
+            <option value="otro">Otro</option>
+            <option value="prefiero_no_decirlo">Prefiero no decirlo</option>
+          </select><br /><br />
+
+          <label>3) ¿Consideras la psicología importante?</label><br />
+          <input type="radio" id="psico_si" name="psicologia_importante" value="sí" required />
+          <label for="psico_si">Sí</label><br />
+          <input type="radio" id="psico_no" name="psicologia_importante" value="no" />
+          <label for="psico_no">No</label><br /><br />
+
+          <label>4) ¿Crees que una terapia te ayudará a mejorar?</label><br />
+          <input type="radio" id="terapia_si" name="terapia_ayuda" value="sí" required />
+          <label for="terapia_si">Sí</label><br />
+          <input type="radio" id="terapia_no" name="terapia_ayuda" value="no" />
+          <label for="terapia_no">No</label><br /><br />
+
+          <label for="problema">5) ¿Qué problema crees tener?</label><br />
+          <textarea id="problema" name="problema" rows="4" required></textarea><br /><br />
+
+          <button type="submit">Enviar</button>
+        </form>
+      </article>
 
       <article id="servicio">
         <h2>Servicio que ofrece</h2>
