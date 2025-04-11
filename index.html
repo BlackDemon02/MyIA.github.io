@@ -150,9 +150,40 @@
       </article>
 
       <article id="formulario">
-        <h2>Formulario</h2>
-        <p>Puedes contactarnos llenando un formulario con tus datos y tus inquietudes. (Aquí podrías agregar un formulario real más adelante).</p>
-      </article>
+  <h2>Formulario</h2>
+  <p>Puedes contactarnos llenando un formulario con tus datos y tus inquietudes.</p>
+
+  <form action="#" method="post" style="margin-top: 1rem;">
+    <label for="edad">1) ¿Qué edad tienes?</label><br />
+    <input type="number" id="edad" name="edad" min="1" max="120" required /><br /><br />
+
+    <label for="sexo">2) ¿Qué sexo eres?</label><br />
+    <select id="sexo" name="sexo" required>
+      <option value="">Selecciona una opción</option>
+      <option value="femenino">Femenino</option>
+      <option value="masculino">Masculino</option>
+      <option value="otro">Otro</option>
+      <option value="prefiero_no_decirlo">Prefiero no decirlo</option>
+    </select><br /><br />
+
+    <label>3) ¿Consideras la psicología importante?</label><br />
+    <input type="radio" id="psico_si" name="psicologia_importante" value="sí" required />
+    <label for="psico_si">Sí</label><br />
+    <input type="radio" id="psico_no" name="psicologia_importante" value="no" />
+    <label for="psico_no">No</label><br /><br />
+
+    <label>4) ¿Crees que una terapia te ayudará a mejorar?</label><br />
+    <input type="radio" id="terapia_si" name="terapia_ayuda" value="sí" required />
+    <label for="terapia_si">Sí</label><br />
+    <input type="radio" id="terapia_no" name="terapia_ayuda" value="no" />
+    <label for="terapia_no">No</label><br /><br />
+
+    <label for="problema">5) ¿Qué problema crees tener?</label><br />
+    <textarea id="problema" name="problema" rows="4" cols="50" placeholder="Describe tu situación..." required></textarea><br /><br />
+
+    <button type="submit">Enviar</button>
+  </form>
+</article>
 
       <article id="servicio">
         <h2>Servicio que ofrece</h2>
