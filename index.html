@@ -23,7 +23,7 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      margin-left: 250px; /* espacio para el sidebar fijo */
+      margin-left: 250px;
     }
 
     header {
@@ -89,6 +89,14 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
+    .publicacion {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
     footer {
       background-color: #3f51b5;
       color: white;
@@ -121,6 +129,20 @@
         margin: 0.5rem;
         flex: 1 1 40%;
       }
+
+      .publicacion {
+        margin-top: 2rem;
+        padding: 1rem;
+      }
+
+      .publicacion h3 {
+        font-size: 1.2rem;
+      }
+
+      .publicacion p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
     }
   </style>
 </head>
@@ -131,7 +153,7 @@
     <a href="#formulario">Formulario</a>
     <a href="#servicio">Servicio que ofrece</a>
     <a href="#ubicacion">Ubicación</a>
-    <a href="#publicar">Contáctanos</a>
+    <a href="#contacto">Contáctanos</a>
     <a href="#publicaciones">Publicaciones</a>
   </aside>
 
@@ -143,197 +165,84 @@
       <p>Conocimiento para el bienestar emocional</p>
     </header>
 
+    <img src="https://th.bing.com/th/id/OIP.HY98sz4Pi3obnymlb-lBXgHaEJ?rs=1&pid=ImgDetMain" alt="Imagen principal" style="width:100%; height:auto; margin-bottom: 2rem;"/>
+
     <main>
       <article id="inicio">
-  <img src="https://cdn.techtitute.com/techtitute/cursos/00728073/recursos/contenidos/especializacion-psicolog%C3%ADa-aplicada-a-contextos-socio-educativos.jpg" alt="Psicología" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;" />
-  
-  <h2>Inicio</h2>
-  <p>
-    Bienvenido a nuestro blog de psicología. Este espacio ha sido creado con el objetivo de brindar apoyo emocional y orientación a jóvenes entre los 3 y 25 años de edad.
-  </p>
-  <p style="margin-top: 1rem;">
-    Nuestro propósito principal es ayudar a quienes enfrentan problemas relacionados con el estrés, la falta de control emocional y conductas alteradas que afectan su vida diaria. 
-  </p>
-  <p style="margin-top: 1rem;">
-    Ofrecemos terapias psicológicas con una duración aproximada de 50 minutos, las cuales pueden ser presenciales o virtuales, adaptándonos a las necesidades de cada persona.
-  </p>
-  <p style="margin-top: 1rem;">
-    La meta de este proyecto es brindar herramientas para mejorar el bienestar emocional y fomentar el desarrollo personal de cada individuo.
-  </p>
-</article>
-
-
+        <h2>Inicio</h2>
+        <p>Este blog fue creado para ayudar a jóvenes entre 3 y 25 años que enfrentan dificultades emocionales o de conducta. Las terapias tienen una duración aproximada de 50 minutos y pueden ser virtuales o presenciales. Nuestro objetivo es brindar apoyo psicológico ante problemas como el estrés y la falta de control emocional, que pueden afectar la vida diaria. </p>
+      </article>
 
       <article id="formulario">
-  <h2>Formulario</h2>
-  <p>Puedes contactarnos llenando un formulario con tus datos y tus inquietudes.</p>
-
-  <form id="contactForm" onsubmit="enviarCorreo(); return false;" style="margin-top: 1rem;">
-    <label for="edad">1) ¿Qué edad tienes?</label><br />
-    <input type="number" id="edad" name="edad" min="1" max="120" required /><br /><br />
-
-    <label for="sexo">2) ¿Qué sexo eres?</label><br />
-    <select id="sexo" name="sexo" required>
-      <option value="">Selecciona una opción</option>
-      <option value="Femenino">Femenino</option>
-      <option value="Masculino">Masculino</option>
-      <option value="Otro">Otro</option>
-      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
-    </select><br /><br />
-
-    <label>3) ¿Consideras la psicología importante?</label><br />
-    <input type="radio" id="psico_si" name="psicologia_importante" value="Sí" required />
-    <label for="psico_si">Sí</label><br />
-    <input type="radio" id="psico_no" name="psicologia_importante" value="No" />
-    <label for="psico_no">No</label><br /><br />
-
-    <label>4) ¿Crees que una terapia te ayudará a mejorar?</label><br />
-    <input type="radio" id="terapia_si" name="terapia_ayuda" value="Sí" required />
-    <label for="terapia_si">Sí</label><br />
-    <input type="radio" id="terapia_no" name="terapia_ayuda" value="No" />
-    <label for="terapia_no">No</label><br /><br />
-
-    <label for="problema">5) ¿Qué problema crees tener?</label><br />
-    <textarea id="problema" name="problema" rows="4" cols="50" placeholder="Describe tu situación..." required></textarea><br /><br />
-
-    <button type="submit">Enviar</button>
-  </form>
-
-  <script>
-    function enviarCorreo() {
-      const edad = document.getElementById("edad").value;
-      const sexo = document.getElementById("sexo").value;
-      const psicologia = document.querySelector('input[name="psicologia_importante"]:checked').value;
-      const terapia = document.querySelector('input[name="terapia_ayuda"]:checked').value;
-      const problema = document.getElementById("problema").value;
-
-      const asunto = "Formulario de Contacto - Blog de Psicología";
-      const cuerpo = `Edad: ${edad}%0D%0A` +
-                     `Sexo: ${sexo}%0D%0A` +
-                     `¿Consideras la psicología importante?: ${psicologia}%0D%0A` +
-                     `¿Crees que una terapia te ayudará?: ${terapia}%0D%0A` +
-                     `Problema que cree tener: ${problema}`;
-
-      const mailtoLink = `mailto:menvejul55@hotmail.com?subject=${encodeURIComponent(asunto)}&body=${cuerpo}`;
-
-      window.location.href = mailtoLink;
-    }
-  </script>
-</article>
-
-
+        <!-- Aquí va tu formulario como ya lo tenías -->
+      </article>
 
       <article id="servicio">
-  <h2>Servicio que ofrece</h2>
-  <p>
-    Ofrecemos orientación psicológica, talleres de crecimiento personal y recursos gratuitos sobre salud mental.
-  </p>
-  <p style="margin-top: 1rem;">
-    <strong>Atención especial:</strong>
-    <ul>
-      <li>Adolescentes y jóvenes</li>
-      <li>Test vocacional</li>
-    </ul>
-  </p>
-  <p style="margin-top: 1rem;">
-    <strong>Psicoterapia:</strong>
-    <ul>
-      <li>Adolescentes</li>
-      <li>Jóvenes</li>
-      <li>Adultos</li>
-      <li>Familiar</li>
-    </ul>
-  </p>
-  <p style="margin-top: 1rem;">
-    <strong>Terapia enfocada en:</strong>
-    <ul>
-      <li>Gestión emocional</li>
-      <li>Cambios de conducta</li>
-    </ul>
-  </p>
-  <p style="margin-top: 1rem;">
-    Todos los servicios se ofrecen tanto de manera <strong>presencial</strong> como <strong>virtual</strong>, según la disponibilidad y preferencia del paciente.
-  </p>
-</article>
-
+        <h2>Servicio que ofrece</h2>
+        <p>Ofrecemos orientación psicológica, talleres de crecimiento personal y recursos gratuitos sobre salud mental.</p>
+        <h3>Atención especial:</h3>
+        <ul>
+          <li>Adolescentes - Jóvenes</li>
+          <li>Test vocacional</li>
+        </ul>
+        <h3>Psicoterapia:</h3>
+        <ul>
+          <li>Adolescentes</li>
+          <li>Jóvenes</li>
+          <li>Adultos</li>
+          <li>Familiar</li>
+        </ul>
+        <h3>Terapia:</h3>
+        <ul>
+          <li>Emocional</li>
+          <li>Cambios de conducta</li>
+        </ul>
+        <p><strong>Modalidad:</strong> Servicios disponibles de forma virtual o presencial.</p>
+      </article>
 
       <article id="ubicacion">
-  <h2>Ubicación</h2>
-  <p>Nos encontramos en:</p>
-  <p>
-    <strong>Juan Escutia No. 518</strong><br />
-    Col. Morelos, MZ. 5 Lt. 19<br />
-    C.P. 42060, Pachuca, Hgo.<br />
-  </p>
-  <p>
-    También ofrecemos sesiones virtuales para todo el país.
-  </p>
-  <p>
-    <a href="https://maps.app.goo.gl/zK9g7A9iVvQU86ZP6?g_st=ac" target="_blank" style="color: #3f51b5; font-weight: bold;">
-      📍 Ver ubicación en Google Maps
-    </a>
-  </p>
-</article>
+        <h2>Ubicación</h2>
+        <p>Juan Escutia No.518, Col. Morelos MZ.5 Lt.19, C.P.42060, Pachuca, Hgo.</p>
+        <a href="https://maps.app.goo.gl/zK9g7A9iVvQU86ZP6?g_st=ac" target="_blank">Ver en Google Maps</a>
+      </article>
 
-
-        <article id="publicar">
-  <section id="contacto">
-  <h2>Contáctanos</h2>
-  <p>¿Tienes dudas o quieres agendar una cita? ¡Estamos para ayudarte!</p>
-  <p>
-    📞 <strong>Teléfonos:</strong><br>
-    771 130 5644<br>
-    771 775 2249
-  </p>
-  <p>
-    📧 <strong>Correo electrónico:</strong><br>
-    <a href="mailto:menvejul55@hotmail.com">menvejul55@hotmail.com</a>
-  </p>
-</section>
-
-</article>
-
-
-
+      <article id="contacto">
+        <h2>Contáctanos</h2>
+        <p>📞 Teléfonos: <strong>771 130 5644</strong> / <strong>771 775 2249</strong></p>
+        <p>📧 Correo: <a href="mailto:menvejul55@hotmail.com">menvejul55@hotmail.com</a></p>
+      </article>
 
       <article id="publicaciones">
-  <h2>Publicaciones</h2>
-  <p>Últimos artículos publicados:</p>
+        <h2>Publicaciones</h2>
 
-  <div style="margin-top: 2rem; padding: 1.5rem; background-color: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-    <h3>🧠 Título: "La Inteligencia Emocional: El Camino hacia el Autoconocimiento y el Bienestar"</h3>
-    <p>La inteligencia emocional (IE) es la capacidad de reconocer, comprender y manejar nuestras emociones, así como las de los demás. Este concepto, popularizado por el psicólogo Daniel Goleman, nos recuerda que nuestras emociones no son algo que debamos "controlar" en el sentido estricto de la palabra, sino aprender a comprender y gestionar de manera que nos ayuden a crecer.</p>
-    <p><strong>¿Por qué es tan importante?</strong><br>
-    Una alta inteligencia emocional nos permite ser más empáticos, tomar decisiones más acertadas y enfrentar las dificultades de la vida con mayor resiliencia.</p>
-    <p><strong>Los pilares de la IE:</strong><br>
-      - Autoconciencia: Saber qué sentimos y por qué.<br>
-      - Autorregulación: Saber cuándo y cómo gestionar nuestras emociones.<br>
-      - Empatía: Ponernos en el lugar del otro.<br>
-      - Habilidades sociales: Saber cómo comunicarnos eficazmente.
-    </p>
-    <p><em>Reflexión:</em><br>
-    La inteligencia emocional nos invita a hacer una pausa, respirar y observar nuestras emociones antes de actuar. La verdadera fuerza está en orientar lo que sentimos hacia algo positivo.</p>
-  </div>
+        <div class="publicacion">
+          <h3>🧠 Título: "La Inteligencia Emocional: El Camino hacia el Autoconocimiento y el Bienestar"</h3>
+          <p>La inteligencia emocional (IE) es la capacidad de reconocer, comprender y manejar nuestras emociones, así como las de los demás. Este concepto, popularizado por el psicólogo Daniel Goleman, nos recuerda que nuestras emociones no son algo que debamos "controlar", sino aprender a comprender y gestionar.</p>
+          <p><strong>¿Por qué es tan importante?</strong> Una alta inteligencia emocional nos permite ser más empáticos, tomar decisiones más acertadas y enfrentar dificultades con mayor resiliencia.</p>
+          <p><strong>Los pilares de la IE:</strong></p>
+          <ul>
+            <li>Autoconciencia</li>
+            <li>Autorregulación</li>
+            <li>Empatía</li>
+            <li>Habilidades sociales</li>
+          </ul>
+          <p><strong>Reflexión:</strong> La inteligencia emocional nos invita a hacer una pausa y observar nuestras emociones antes de actuar. ¿Qué tan a menudo reflexionas sobre tus emociones antes de tomar decisiones?</p>
+        </div>
 
-  <div style="margin-top: 3rem; padding: 1.5rem; background-color: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-    <h3>📱 Título: "¿Cómo las Redes Sociales Afectan Nuestra Salud Mental?"</h3>
-    <p>Las redes sociales forman parte esencial de nuestras vidas, pero ¿nos hemos detenido a pensar en cómo lo que consumimos ahí impacta nuestra salud mental?</p>
-    <p><strong>La Ilusión de la Perfección:</strong><br>
-    Las redes están llenas de imágenes de vidas aparentemente perfectas, lo que puede generar comparaciones que afectan nuestra autoestima.</p>
-    <p><strong>El Efecto de la Comparación Social:</strong><br>
-    Compararnos constantemente puede desencadenar ansiedad o depresión. Además, el desplazamiento infinito por contenidos puede generar adicción.</p>
-    <p><strong>¿Cómo Protegerte?</strong><br>
-      - Establece límites.<br>
-      - Consume contenido positivo.<br>
-      - Haz pausas digitales.
-    </p>
-    <p><em>Reflexión:</em><br>
-    Las redes sociales pueden ser útiles o dañinas según cómo las usemos. Sé consciente del contenido que consumes.</p>
-  </div>
-</article>
+        <div class="publicacion">
+          <h3>📱 Título: "¿Cómo las Redes Sociales Afectan Nuestra Salud Mental?"</h3>
+          <p>Las redes sociales están llenas de imágenes de vidas aparentemente perfectas, lo que puede generar comparaciones que afectan nuestra autoestima.</p>
+          <p><strong>El Efecto de la Comparación Social:</strong> Ver constantemente la vida de otros puede causar ansiedad o depresión, y el uso excesivo puede llevar a agotamiento emocional.</p>
+          <p><strong>¿Cómo protegerte?</strong></p>
+          <ul>
+            <li>Establece límites</li>
+            <li>Consume contenido positivo</li>
+            <li>Haz pausas</li>
+          </ul>
+          <p><strong>Reflexión:</strong> Las redes pueden ser útiles, pero también dañinas si no se usan conscientemente. ¿Qué tipo de contenido prefieres consumir para sentirte mejor contigo mismo?</p>
+        </div>
 
-
-      
+      </article>
     </main>
 
     <footer>
